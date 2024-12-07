@@ -9,6 +9,7 @@ Key highlights include:
 - Incorporation of advanced feature engineering techniques, including lag features and rolling averages.
 - Evaluation of multiple models, including **transformer-based approaches** for future scalability.
 - Explorations into future directions, such as **transformers** and **reinforcement learning**.
+
 ---
 
 ## Features
@@ -38,7 +39,6 @@ Key highlights include:
     - Better handling of volatility in stocks like NVIDIA.
 
 3. **LSTM Model:**
-
   - Framework: Sequential Neural Network (LSTM).
   - Performance:
     - Achieved MAE: 0.0201 (on AvgTone predictions).
@@ -47,7 +47,6 @@ Key highlights include:
     - Scaled input data for better gradient flow during training.
 
 4. **GridSearch Optimized Model:**
-
   - Framework: XGBoost with hyperparameter tuning using GridSearchCV.
   - Achieved Best MAE:
     - GOOGLE: 3.73
@@ -56,33 +55,50 @@ Key highlights include:
     - APPLE: 2.79
   - Focused on exploring deeper tree architectures and enhanced learning rates.
 
-### Data Sources
+---
+
+## Data Sources
 - **Historical Stock Prices**:
   - Acquired from Yahoo Finance.
   - Data covers a period from 2010-01-01 to 2024-11-15.
 - **GDELT Sentiment Analysis**:
   - Data Attributes:
     - AvgTone: Sentiment polarity score.
-  - Captures sentiment-driven trends for selected companies.
+  - Extracted using Google BigQuery from GDELT v2, focusing on AvgTone and sentiment metrics for stock-specific tone analysis.
 - **Additional Features:**
-- Lagged stock prices (```Lag_1```, ```Lag_2```).
-- Rolling mean features (e.g., 5-day, 20-day averages).
+  - Lagged stock prices (```Lag_1```, ```Lag_2```).
+  - Rolling mean features (e.g., 5-day, 20-day averages).
 
 ---
 
 ## Visualizations
-### Model Comparisons
-1. Residual Distributions and Over Time
+
+### 1. Residual Distributions and Over Time
    - Show the accuracy and variance of the combined models.
    - Key takeaway: Improved models have tighter residual distributions.
 
-2. Actual vs Predicted Prices
-   - Highlighted by stock (GOOGLE, NETFLIX, NVIDIA, APPLE).
-   - **First Model** underpredicts volatile stocks like NVIDIA.
-   - **Improved Model** closely matches trends.
+### 2. Actual vs Predicted Prices
+- **GOOGLE**
+    - Improved model predictions closely align with actual stock prices, reducing errors compared to the first model.
+    ![Google Chart](images/google_chart.png)
 
-3. Sector-Specific Forecasts
-   - Future predictions demonstrate scalability of improved models.Real Stock Prices Comparison
+- **NVIDIA**
+    - NVIDIA's high volatility posed challenges for the first model, which were addressed in the improved version.
+    ![NVIDIA Chart](images/nvidia_chart.png)
+
+- **NETFLIX**
+    - For Netflix, the improved model effectively captures trends while addressing sentiment-driven deviations.
+    ![Netflix Chart](images/netflix_chart.png)
+
+- **APPLE**
+    - Apple's stock price predictions show high accuracy in both the first and improved models.
+    ![Apple Chart](images/apple_chart.png)
+
+### 3. Sector-Specific Forecasts
+   - Future predictions demonstrate scalability of improved models.
+
+---
+
 ## Real Stock Prices Comparison
 | Ticker | Date       | Actual Price | Improved Model | First Model |
 |--------|------------|--------------|----------------|-------------|
@@ -91,24 +107,22 @@ Key highlights include:
 | NFLX   | 2024-11-22 | $897.79      | $764.94        | $345.55     |
 | NVDA   | 2024-11-22 | $141.94      | $141.86        | $7.83       |
 
-![Alt Text](apple chart.png)
-![Alt Text](apple chart.png)
+---
+
+
 ## **Requirements**
 - Python 3.10 or later
 - Google Colab Pro for A100 GPU access (optional for large models)
-- Libraries:
-  - pandas
-  - numpy
-  - xgboost
-  - sklearn
-  - matplotlib
+    ``` bash
+    pip install pandas numpy xgboost matplotlib keras tensorflow
+     ```
 
 ## **Acknowledgements**
 
+**Google BigQuery**: Extracted GDELT sentiment data for training.
 **Google Colab Pro**: Providing access to A100 GPUs for experimentation.
 **GDELTv2 Project**: For sentiment and tone data.
 **Yahoo Finance**: Source for historical stock data.
-**XGBoost and Keras**: Core libraries used for model training and evaluation.
 
 ## **Future Work**
 1. **Improved Data Integration**:
@@ -123,6 +137,13 @@ Develop pipelines for continuous model retraining.
 4. **Reinforcement Learning**:
 Implement Stable-Baselines3 for dynamic trading strategies.
 Define multi-objective reward functions to balance risk and return.
+
+
+## **License**
+
+This project is licensed under the MIT License. See the ```LICENSE``` file for more information.
+
+This format should work perfectly for your project. Let me know if anything needs refinement!
 
 
 ## **License**
