@@ -144,10 +144,3 @@ Define multi-objective reward functions to balance risk and return.
 This project is licensed under the MIT License. See the ```LICENSE``` file for more information.
 
 This format should work perfectly for your project. Let me know if anything needs refinement!
-
-
-## **License**
-
-This project is licensed under the MIT License. See the ```LICENSE``` file for more information.
-
-This format should work perfectly for your project. Let me know if anything needs refinement!
